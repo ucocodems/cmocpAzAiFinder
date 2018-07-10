@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:cmocpAIFinder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AML Studio Configuration" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="Authenticate with Azure" HorizontalAlignment="Left" Margin="16,19,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="115,62,0,0" VerticalAlignment="Top" Width="238" ItemsSource="{Binding Path=Subscriptions}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=SelectedSubscription}" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.049"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+        </ComboBox>
+        <ComboBox HorizontalAlignment="Left" Margin="115,89,0,0" VerticalAlignment="Top" Width="239" ItemsSource="{Binding Path=ResourceGroups}"  DisplayMemberPath="Value" SelectedValuePath="Value" SelectedValue="{Binding Path=SelectedResourceGroup}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="115,116,0,0" VerticalAlignment="Top" Width="239" ItemsSource="{Binding Path=AMLStudioWebServices}" DisplayMemberPath="Key" SelectedValuePath="Value" SelectedValue="{Binding Path=SelectedAMLStudioWebService}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,62,0,0" TextWrapping="Wrap" Text="Subscription" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,89,0,0" TextWrapping="Wrap" Text="Resource Group" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="16,116,0,0" TextWrapping="Wrap" Text="AML Web Service" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="139" Margin="8,11,0,0" VerticalAlignment="Top" Width="368"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="242" Margin="8,169,0,0" VerticalAlignment="Top" Width="775">
+
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="20,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Service URL"/></TextBlock>
+        <TextBox TextWrapping="Wrap" Text="{Binding Path=ServiceURL}" Margin="115,183,24.333,185.667"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="API Key"/></TextBlock>
+        <TextBox TextWrapping="Wrap" Text="{Binding ServiceKeys}" Margin="114,245,23.333,146.667"/>
+        <TextBlock HorizontalAlignment="Left" Margin="49,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Input Parameters"/></TextBlock>
+        <ListBox HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="197" Margin="157,296,0,0" ItemsSource="{Binding InputParams}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" Margin="390,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Output Parameters"/></TextBlock>
+        <ListBox HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="197" Margin="508,296,0,0" ItemsSource="{Binding OutputParams}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </Window>

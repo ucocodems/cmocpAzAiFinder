@@ -20,9 +20,20 @@ namespace cmocpAIFinder
     /// </summary>
     public partial class MainWindow : Window
     {
+        AzureExplorerViewModel viewModel = new AzureExplorerViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = viewModel;
+
+
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Start();
+
+        }       
     }
 }
